@@ -4,11 +4,19 @@ from django.shortcuts import render
 
 # для хранения представлений(контролеров) текущего приложения
 # Create your views here.
-
+data_db = [
+    {'id':1, 'FIO': 'Капшукова Дарья Руслановна', 'interesting': 'Рисование, футбол', 'is_smoke':False},
+ {'id':2, 'FIO': 'Горабалев Кирилл Артемович', 'interesting': 'Бокс, вязание', 'is_smoke':False},
+    {'id': 3, 'FIO': 'Миколадзе Антон Алексеевич', 'interesting': 'история, литрература', 'is_smoke': True},
+]
 
 def index(request):
     if (request.GET):
         print(request.GET)
+    data = {'title': 'Главная страница',
+            'students': data_db,
+            }
+    return render(request, 'women/index.html', context=data)
     return HttpResponse('главная страница women')
 
 
