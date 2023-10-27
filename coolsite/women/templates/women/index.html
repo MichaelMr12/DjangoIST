@@ -1,24 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>{{title}}</title>
 </head>
 <body>
-<h1>{{title | upper |truncatewords:1 | cut:'А'}}</h1>
-<br>
-
 <ul>
-    {% for st in students %}
-    <li><h2>{{ st.FIO }} </h2>
-        <p>{{ st.interesting }}</p>
-        {% if not forloop.last %}
-        <hr>
-        {% endif %}
-
+    {% for m in menu %}
+    <li>
+        <a href="{% url m.url_n %}"> {{m.title}} </a>
 
     </li>
     {% endfor %}
 </ul>
+
+
+<h1> {{menu.0.title}} </h1>
+<br>
+{{slov}}
+
+<br>
+<ul>
+    {% for s in students %}
+    <li>
+        <h2> {{s.FIO }} </h2>
+        <p> {{ s.interesting }} </p>
+        {% if not forloop.last %}
+        <hr>
+        {% endif %}
+
+    </li>
+    {% endfor %}
+</ul>
+
 </body>
 </html>
