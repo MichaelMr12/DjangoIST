@@ -1,22 +1,7 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>{{title}}</title>
-</head>
-<body>
-<ul>
-    {% for m in menu %}
-    <li>
-        <a href="{% url m.url_n %}"> {{m.title}} </a>
+{% extends 'base.html' %}
 
-    </li>
-    {% endfor %}
-</ul>
-
-
-<h1> {{menu.0.title}} </h1>
-<br>
+{% block content %}
+{% include 'nav.html' %}
 {{slov}}
 
 <br>
@@ -33,5 +18,5 @@
     {% endfor %}
 </ul>
 
-</body>
-</html>
+{% include 'nav.html' %}
+{% endblock %}

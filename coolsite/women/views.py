@@ -9,7 +9,7 @@ data_db = [
     {'id': 3, 'FIO': 'Миколадзе Антон Алексеевич', 'interesting': 'история, литрература', 'is_smoke': True},
 ]
 
-menu = [{'title': 'Главная', 'url_n': 'home'}, {'title': 'О программе', 'url_n': 'about'}]
+menu = [{'title': 'Главная', 'url_n': 'home'}, {'title': 'О программе', 'url_n': 'about'}, {'title': 'Крутая страница', 'url_n': 'cub'}]
 
 
 def index(request):
@@ -21,10 +21,12 @@ def index(request):
             }
     return render(request, 'women/index.html', context=data)
 
+def cub(request):
+    return render(request, 'women/3D_kub.html', {'menu': menu, 'title': 'Крутая страница',})
 
 
 def about(request):
-    return render(request, 'women/about.html', {'menu': menu, })
+    return render(request, 'women/about.html', {'menu': menu, 'title': 'О приложении',})
 
 
 def categories(request):
