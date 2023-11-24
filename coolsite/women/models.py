@@ -18,6 +18,10 @@ class Students(models.Model):
     time_update = models.DateTimeField(auto_now=True)
     is_smoke = models.BooleanField(default=False)
     is_profcom = models.BooleanField(default=True)
+    slug = models.SlugField(max_length=255, db_index=True, unique=True, verbose_name="URL")
+
+    def __str__(self):
+        return self.fio
 
     def __str__(self):
         return self.fio

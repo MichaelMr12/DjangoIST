@@ -1,8 +1,10 @@
 from django.http import HttpResponse, HttpResponseNotFound, Http404
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 
 # для хранения представлений(контролеров) текущего приложения
 # Create your views here.
+from women.models import Students
+
 data_db = [
     {'id': 1, 'FIO': 'Капшукова Дарья Руслановна', 'interesting': 'Рисование, футбол', 'is_smoke': False},
     {'id': 2, 'FIO': 'Горабалев Кирилл Артемович', 'interesting': 'Бокс, вязание', 'is_smoke': False},
@@ -20,6 +22,14 @@ def index(request):
             'menu': menu,
             }
     return render(request, 'women/index.html', context=data)
+
+def student(request, student_fio):
+    data_db = get_object_or_404(Students, slug= student_fio)
+    data = {'title': 'Главная страница',
+            'students': data_db,
+            'menu': menu,
+            }
+    return render(request, 'women/student.html', context=data)
 
 def cub(request):
     return render(request, 'women/3D_kub.html', {'menu': menu, 'title': 'Крутая страница',})
